@@ -57,6 +57,7 @@ def update_profile(username):
 
 # Function to generate a secret number based on level and type
 def generate_secret_number(level, number_type):
+    # Define max_number and time_limit based on level
     if level == 'easy':
         max_number = 50
         time_limit = 30
@@ -67,10 +68,12 @@ def generate_secret_number(level, number_type):
         max_number = 200
         time_limit = 60
     else:
+        # Default to easy level if invalid level is provided
         print("Invalid level. Setting level to easy.")
         max_number = 50
         time_limit = 30
 
+    # Generate secret number based on number_type
     if number_type == 'basic':
         return random.randint(1, max_number), time_limit
     elif number_type == 'odd':
@@ -84,6 +87,7 @@ def generate_secret_number(level, number_type):
                 primes.append(num)
         return random.choice(primes), time_limit
     else:
+        # Default to basic numbers if invalid number_type is provided
         print("Invalid number type. Using normal numbers.")
         return random.randint(1, max_number), time_limit
 
@@ -109,6 +113,7 @@ def single_player_game(username):
     mode_choice = input("Enter your choice: ")
 
     if mode_choice == "1":
+        # Normal Mode
         print("\nSelect Level:")
         print("1. Easy (Guess Number Between 1-50)")
         print("2. Medium (Guess Number Between 1-100)")
@@ -170,6 +175,7 @@ def single_player_game(username):
                 break
 
     elif mode_choice == "2":
+        # Rapid Round Mode
         print("\nSelect Level for Rapid Round:")
         print("1. Easy (Guess Number Between 1-50 in 30 seconds)")
         print("2. Medium (Guess Number Between 1-100 in 45 seconds)")
